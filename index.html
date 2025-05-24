@@ -9,6 +9,7 @@
 
 <body>
 	<div><button>Нажать</button></div>
+
 	<div>
 		<script src="https://unpkg.com/@vkid/sdk@<3.0.0/dist-sdk/umd/index.js"></script>
 		<div>
@@ -43,6 +44,7 @@
 
 					function vkidOnSuccess(data) {
 						// Обработка полученного результата
+						console.log(data.access_token)
 					}
 
 					function vkidOnError(error) {
