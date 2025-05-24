@@ -44,11 +44,29 @@
 
 					function vkidOnSuccess(data) {
 						// Обработка полученного результата
-						console.log(data.access_token)
+						const key = 'vk1.a.1kD3xZjypCdCX6ocaxfJD5NLO2dj8iv1qRCyYpKv0SYw8JVNX8-GSUz1Fski_n5P8cK1fDp_8tvK7bbYln7pbOAlPHs_wI45mVgTqyDn6Wr1Otbt5WokD_xtkQy3MMKDJYgJpldXBWwdPPX43yeSIzYCiYFrmW3NPZGeGQRTqKdU8B2k0FzPy-vY4QAthdeAbWGV6XLHllCe9Kn48PdgeQ'
+						const option = {
+							method: 'POST',
+							headers: {
+								//"Authorization": `Bearer ${data.access_token}`
+								"Authorization": `Bearer ${key}`,
+								//"Access-Control-Allow-Origin": "*",
+								//"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
+								//"Access- Control - Allow - Credentials": true,
+								"Access-Control-Allow-Headers": "Authorization, Origin, X-Requested-With, Accept, X-PINGOTHER, Content-Type"
+							}
+						}
+						const params = `?owner_id=-26991292&message=NewMessage&v=5.131`
+
+						fetch(`https://api.vk.com/method/wall.post${params}`, option)
+							.then(res => console.log(res.json))
+							.then(data => console.log(data))
+							.catch(error => console.error(error, error.message, 'Ошибка!'))
 					}
 
 					function vkidOnError(error) {
 						// Обработка ошибки
+						console.error(error, 'Ошибка!!!')
 					}
 				}
 			</script>
